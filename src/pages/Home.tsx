@@ -1,19 +1,27 @@
 const Home = () => {
   return (
-    <div className="bg-white h-full">
-      <h1 className="text-coralblue">Welcome Home</h1>
-      <div className="content">
-        <p>This is a sample home page component.</p>
-        <button className="cta-button">Get Started</button>
-      </div>
-      <section className="features">
-        <h2>Features</h2>
-        <ul>
-          <li>Feature 1</li>
-          <li>Feature 2</li>
-          <li>Feature 3</li>
-        </ul>
-      </section>
+    <div className="bg-white flex flex-col m-auto items-center w-xs">
+      <h1 className="text-coralblue font-bold my-10">Error Find</h1>
+
+      <ul className="text-coralblue w-full flex flex-col items-center text-center">
+        <li className="bg-skyblue w-full py-2 border-t border-x border-gray-200">
+          ACTIVITY ONE
+        </li>
+        <li className="bg-skyblue w-full py-2 border-t border-x border-gray-200">
+          ACTIVITY TWO
+        </li>
+        <li className="bg-skyblue w-full py-2 border-t border-x border-gray-200">
+          ACTIVITY THREE
+        </li>
+        <li className="bg-skyblue w-full py-2 border-t border-x border-gray-200">
+          ACTIVITY FOUR
+        </li>
+        <li className="bg-skyblue w-full py-2 border-t border-x border-gray-200">
+          ACTIVITY FIVE
+        </li>
+      </ul>
+
+      <button>Result</button>
     </div>
   );
 };

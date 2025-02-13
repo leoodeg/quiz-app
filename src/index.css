@@ -2,9 +2,11 @@
 
 @theme {
   --color-coralblue: #2799fb;
+  --color-skyblue: #fcfdff;
 }
 
-:root {
+#root {
+  height: 100vh;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -28,12 +30,14 @@ a:hover {
 }
 
 body {
+  height: 100%;
   /* Removed for now */
   /* margin: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh; */
+
 }
 
 h1 {
