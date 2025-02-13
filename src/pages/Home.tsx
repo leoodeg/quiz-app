@@ -1,7 +1,7 @@
 const Home = () => {
   return (
-    <div className="home-container">
-      <h1>Welcome Home</h1>
+    <div className="bg-white h-full">
+      <h1 className="text-coralblue">Welcome Home</h1>
       <div className="content">
         <p>This is a sample home page component.</p>
         <button className="cta-button">Get Started</button>
