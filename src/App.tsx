@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="flex h-full">
+    <div className="flex h-full text-coralblue">
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
