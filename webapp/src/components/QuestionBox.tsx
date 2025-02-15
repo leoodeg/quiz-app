@@ -1,3 +1,5 @@
+import FormattedText from "./FormattedText";
+
 interface QuestionBoxType {
   activityName: string;
   roundTitle: string | null;
@@ -15,18 +17,21 @@ const QuestionBox = ({
 }: QuestionBoxType) => {
   return (
     <>
-      <div className="bg-white flex flex-col m-auto items-center w-xs border border-gray-200 p-6">
-        <div className="text-sm mb-8">
-          {activityName} | {roundTitle}
+      <div className="bg-white flex flex-col m-auto w-lg border border-gray-200 pt-6">
+        <div className="text-sm mb-8 font-bold pl-6">
+          {activityName.toUpperCase()} {roundTitle && "ROUND HERE"}
         </div>
 
-        <div className="text-2xl mb-8">Q{order}.</div>
+        <div className="text-2xl mb-8 font-bold pl-6">Q{order}.</div>
 
-        <div className="text-center mb-12">{stimulus}</div>
+        <FormattedText
+          className="bg-skyblue w-full border-y py-5 pl-6 border-gray-300"
+          text={stimulus}
+        />
 
-        <div className="flex gap-4">
+        <div className="flex gap-24 self-center py-6">
           <button
-            className="px-8 py-2"
+            className="px-8 py-2 text-xs font-bold"
             onClick={() => {
               setAnswer(true);
             }}
@@ -34,7 +39,7 @@ const QuestionBox = ({
             CORRECT
           </button>
           <button
-            className="px-8 py-"
+            className="px-8 py-2 text-xs font-bold"
             onClick={() => {
               setAnswer(false);
             }}
