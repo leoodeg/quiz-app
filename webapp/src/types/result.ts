@@ -1,6 +1,6 @@
 export type QuestionResult = {
     order: number;
-    result: string;
+    isAnswerCorrect: boolean;
 };
   
 export type RoundResults = {

@@ -6,13 +6,16 @@ import {
 import { type ActivityOne } from "../types/data";
 import { ACTIVITY_ONE } from "../constants/common";
 import QuestionBox from "../components/QuestionBox";
+import Results from "../components/Results";
 import { ResultsState, QuestionResult } from "../types/result";
 
 const ActivityOne = () => {
   const [currentActivity, setCurrentActivity] = useState<ActivityOne | null>(
     null
   );
-  const [questionNumber, setQuestionNumber] = useState<number>(0);
+  const [questionIndex, setQuestionIndex] = useState<number>(0);
+  const [totalNoQuestions, setTotalNoQuestions] = useState<number>(0);
+  const [isActivityDone, setIsActivityDone] = useState<boolean>(false);
   const [resultsData, setResultsData] = useState<ResultsState>({
     activityName: ACTIVITY_ONE,
     rounds: [],
@@ -20,6 +23,14 @@ const ActivityOne = () => {
 
   // const navigate = useNavigate();
   const location = useLocation();
+
+  useEffect(() => {
+    if (location.state?.activity) {
+      setCurrentActivity(location.state.activity);
+      setTotalNoQuestions(location.state.activity.questions.length);
+      addNewRound();
+    }
+  }, [location]);
 
   const addNewRound = () => {
     setResultsData((prevState) => ({
@@ -41,13 +52,6 @@ const ActivityOne = () => {
     });
   };
 
-  useEffect(() => {
-    if (location.state?.activity) {
-      setCurrentActivity(location.state.activity);
-      addNewRound();
-    }
-  }, [location]);
-
   //   const handleAnswer = () => {
   //     // TODO: Save answer logic here
   //     navigate("/results", {
@@ -58,24 +62,35 @@ const ActivityOne = () => {
   //     });
   //   };
 
-  console.log(resultsData);
-
   if (!currentActivity) return <div>Loading...</div>;
 
-  const handleSetAnswer = (answer: string) => {
-    addResultToLatestRound({ order: 1, result: answer });
-    setQuestionNumber(questionNumber + 1);
+  const handleSetAnswer = (answer: boolean) => {
+    const newQuestionIndex = questionIndex + 1;
+    addResultToLatestRound({
+      order: newQuestionIndex,
+      isAnswerCorrect:
+        currentActivity.questions[questionIndex].is_correct === answer,
+    });
+    setQuestionIndex(newQuestionIndex);
+
+    if (newQuestionIndex === totalNoQuestions) {
+      setIsActivityDone(true);
+    }
   };
 
   return (
     <>
-      <QuestionBox
-        activityName={currentActivity.activity_name}
-        roundTitle={null}
-        stimulus={currentActivity.questions[questionNumber].stimulus}
-        setAnswer={handleSetAnswer}
-        order={currentActivity.questions[questionNumber].order}
-      />
+      {isActivityDone ? (
+        <Results resultsData={resultsData} />
+      ) : (
+        <QuestionBox
+          activityName={currentActivity.activity_name}
+          roundTitle={null}
+          stimulus={currentActivity.questions[questionIndex].stimulus}
+          setAnswer={handleSetAnswer}
+          order={currentActivity.questions[questionIndex].order}
+        />
+      )}
     </>
   );
 };

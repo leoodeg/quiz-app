@@ -2,7 +2,7 @@ interface QuestionBoxType {
   activityName: string;
   roundTitle: string | null;
   stimulus: string;
-  setAnswer: (answer: string) => void;
+  setAnswer: (answer: boolean) => void;
   order: number;
 }
 
@@ -28,7 +28,7 @@ const QuestionBox = ({
           <button
             className="px-8 py-2"
             onClick={() => {
-              setAnswer("correct");
+              setAnswer(true);
             }}
           >
             CORRECT
@@ -36,7 +36,7 @@ const QuestionBox = ({
           <button
             className="px-8 py-"
             onClick={() => {
-              setAnswer("incorrect");
+              setAnswer(false);
             }}
           >
             INCORRECT

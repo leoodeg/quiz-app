@@ -1,29 +1,26 @@
-import { useNavigate, useLocation } from "react-router-dom";
-import { Question, ActivityOne } from "../types/data";
+import { useNavigate } from "react-router-dom";
+import { ResultsState } from "../types/result";
 
-const Results = () => {
+const Results = ({ resultsData }: { resultsData: ResultsState }) => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const activity = location.state?.activity as ActivityOne;
-
-  if (!activity) return <div>No results available</div>;
-
-  console.log(location.state?.answers);
 
   return (
     <div className="bg-white flex flex-col m-auto items-center w-xs border border-gray-200 p-6">
-      <div className="text-sm mb-8">{activity.activity_name}</div>
+      <div className="text-sm mb-8">{resultsData.activityName}</div>
 
       <div className="text-2xl mb-8">Results</div>
 
       <div className="w-full space-y-4 mb-8">
-        {activity.questions.map((question: Question) => (
-          <div key={question.order} className="flex justify-between">
-            <span>Q{question.order}</span>
-            <span className="text-coralblue">
-              {location.state?.answers?.[question.order - 1]?.toUpperCase() ||
-                "NOT ANSWERED"}
-            </span>
+        {resultsData.rounds.map((round) => (
+          <div key={round.roundNumber}>
+            {round.results.map((result) => (
+              <div key={result.order} className="flex justify-between">
+                <span>Q{result.order}</span>
+                <span className="text-coralblue">
+                  {result.isAnswerCorrect ? "CORRECT" : "FALSE"}
+                </span>
+              </div>
+            ))}
           </div>
         ))}
       </div>
