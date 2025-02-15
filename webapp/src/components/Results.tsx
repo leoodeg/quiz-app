@@ -1,10 +1,10 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { Activity } from "../types/data";
+import { Question, ActivityOne } from "../types/data";
 
 const Results = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const activity = location.state?.activity as Activity;
+  const activity = location.state?.activity as ActivityOne;
 
   if (!activity) return <div>No results available</div>;
 
@@ -17,7 +17,7 @@ const Results = () => {
       <div className="text-2xl mb-8">Results</div>
 
       <div className="w-full space-y-4 mb-8">
-        {activity.questions.map((question) => (
+        {activity.questions.map((question: Question) => (
           <div key={question.order} className="flex justify-between">
             <span>Q{question.order}</span>
             <span className="text-coralblue">

@@ -12,15 +12,21 @@ export interface Question {
     questions: Question[];
   }
 
-  export interface Activity {
+  export interface ActivityOne {
     activity_name: string;
     order: number;
-    questions: (Question | Round)[];
+    questions: Question[];
+  }
+
+  export interface ActivityTwo {
+    activity_name: string;
+    order: number;
+    questions: Round[];
   }
   
   export interface GameResponse {
     name: string;
     heading: string;
-    activities: Activity[];
+    activities: ActivityOne[] | ActivityTwo[];
   }
   

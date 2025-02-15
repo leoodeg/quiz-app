@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "../services/api";
-import { GameResponse, Activity } from "../types/data";
+import { GameResponse, ActivityOne, ActivityTwo } from "../types/data";
 import { useNavigate } from "react-router-dom";
+import { ACTIVITY_ONE, ACTIVITY_TWO } from "../constants/common";
 
 const Home = () => {
   const [data, setData] = useState<GameResponse | null>(null);
@@ -30,8 +31,12 @@ const Home = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const handleActivityClick = (activity: Activity) => {
-    navigate("/question", { state: { activity } });
+  const handleActivityClick = (activity: ActivityOne | ActivityTwo) => {
+    if (activity.activity_name === ACTIVITY_ONE) {
+      navigate("/activityone", { state: { activity } });
+    } else if (activity.activity_name === ACTIVITY_TWO) {
+      navigate("/activitytwo", { state: { activity } });
+    }
   };
 
   return (
