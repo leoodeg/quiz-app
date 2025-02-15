@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { fetchData } from "../services/api";
+import { GameResponse } from "../types/data";
 
 const Home = () => {
-  // TODO: add types
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<GameResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
