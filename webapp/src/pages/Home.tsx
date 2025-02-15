@@ -29,20 +29,22 @@ const Home = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="bg-white flex flex-col m-auto items-center w-xs border border-gray-200">
-      <h3 className="my-12">CAE</h3>
-      <h1 className="font-bold mb-10">Error Find</h1>
+    data && (
+      <div className="bg-white flex flex-col m-auto items-center w-xs border border-gray-200">
+        <h3 className="my-12">CAE</h3>
+        <h1 className="font-bold mb-10">{data.name}</h1>
 
-      <ul className="w-full flex flex-col items-center text-center divide-y divide-gray-300 border-y border-gray-300">
-        <li className="bg-skyblue w-full py-2">ACTIVITY ONE</li>
-        <li className="bg-skyblue w-full py-2">ACTIVITY TWO</li>
-        <li className="bg-skyblue w-full py-2">ACTIVITY THREE</li>
-        <li className="bg-skyblue w-full py-2">ACTIVITY FOUR</li>
-        <li className="bg-skyblue w-full py-2">ACTIVITY FIVE</li>
-      </ul>
+        <ul className="w-full flex flex-col items-center text-center divide-y divide-gray-300 border-y border-gray-300">
+          {data.activities.map((activity) => (
+            <li key={activity.order} className="bg-skyblue w-full py-2">
+              {activity.activity_name}
+            </li>
+          ))}
+        </ul>
 
-      <div className="py-8">Results</div>
-    </div>
+        <div className="py-8">Results</div>
+      </div>
+    )
   );
 };
 
