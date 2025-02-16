@@ -74,3 +74,58 @@ webapp/
 ├── vite.config.ts           # Vite configuration
 └── ...                      # Other source files
 ```
+
+## Deployment Instructions
+
+- Ensure you have the necessary `.pem` file for SSH access to the EC2 instance.
+
+### 1. SSH into the EC2 Instance
+
+Run the following command, replacing `[your-key.pem]` with your actual `.pem` file:
+
+```sh
+ssh -i [your-key.pem] ubuntu@3.106.224.18
+```
+
+### 2. SSH into the EC2 Instance
+
+Once inside the EC2 instance, navigate to the quiz-app repository:
+
+```sh
+cd ~/quiz-app
+```
+
+### 3. Pull the Latest Changes from the Repository
+
+Ensure you are on the correct branch and pull the latest updates:
+
+```sh
+git pull origin main  # Change "main" to the appropriate branch if needed
+```
+
+### 4. Pull the Latest Changes from the Repository
+
+Use PM2 to stop and remove the existing frontend process:
+
+```sh
+pm2 delete quiz-frontend
+```
+
+### 5. Install Dependencies and Build the Frontend
+
+Build the project
+
+```sh
+cd webapp
+npm install
+npm run build
+```
+
+### 6. Restart the Frontend Server with PM2
+
+Run the following command to serve the frontend and ensure it restarts automatically:
+
+```sh
+pm2 start "serve -s dist -l 3000" --name quiz-frontend
+pm2 save
+```

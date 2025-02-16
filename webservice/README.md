@@ -59,3 +59,57 @@ webservice/
 ├── server.ts               # Main server file
 └── ...                     # Other source files
 ```
+
+## Deployment Instructions
+
+- Ensure you have the necessary `.pem` file for SSH access to the EC2 instance.
+
+### 1. SSH into the EC2 Instance
+
+Run the following command, replacing `[your-key.pem]` with your actual `.pem` file:
+
+```sh
+ssh -i [your-key.pem] ubuntu@3.106.224.18
+```
+
+### 2. SSH into the EC2 Instance
+
+Once inside the EC2 instance, navigate to the quiz-app repository:
+
+```sh
+cd ~/quiz-app
+```
+
+### 3. Pull the Latest Changes from the Repository
+
+Ensure you are on the correct branch and pull the latest updates:
+
+```sh
+git pull origin main  # Change "main" to the appropriate branch if needed
+```
+
+### 4. Pull the Latest Changes from the Repository
+
+Use PM2 to stop and remove the existing backend process:
+
+```sh
+pm2 delete quiz-backend
+```
+
+### 5. Install Dependencies and Build the Backend
+
+Install new dependencies
+
+```sh
+cd webservice
+npm install
+```
+
+### 6. Restart the Backend Server with PM2
+
+Run the following command to serve the Backend and ensure it restarts automatically:
+
+```sh
+pm2 start server.ts --name quiz-backend
+pm2 save
+```
