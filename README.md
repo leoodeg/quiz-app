@@ -1,21 +1,39 @@
-# Quiz App Project
+# **Quiz App Project** 🎉
 
-## Overview
+## **Overview**
 
-Welcome to the **Quiz App Project**! This project consists of two main components:
+Welcome to the **Quiz App Project**! 🚀
+
+You can access the application directly in your browser here: [http://3.106.224.18](http://3.106.224.18).
+
+> **Note:** The application is currently not SSL-certified. However, for efficiency, SSL certification and a custom domain will be added as part of future enhancements.
+
+## Features
+
+- **Home Screen**: The home screen contains 2 buttons. Each button starts one of the two activities
+- **Activity One Screen**: Activity one's flow includes a series of flat questions.
+- **Activity Two Screen**: Activity two's flow includes a series of rounds with questions.
+- **Result Screen**: Displays the score to the user after each eactivity, and also includes a button to link to the home screen
+
+## This project consists of two main components:
 
 1. **Web Application**: A front-end quiz application developed using React, TypeScript, and Vite, where users can participate in quizzes and receive instant feedback.
 2. **Web Service**: A backend service built with Node.js and Express that fetches quiz data from a remote JSON source.
 
 This project is designed to be lightweight, fast, and easy to set up, making it a great starting point for anyone interested in building interactive quiz-based applications.
 
-### Getting Started
+## Getting Started
 
 To run the project:
 
 1. Start the Web Application (webapp) check out the [WebApp README](webapp/README.md)
 2. Start the Web Service (webservice) check out the [WebService README](webservice/README.md)
 3. Open the web app in your browser and start taking quizzes! 🎉
+
+## Architecure
+
+Note: Express is provisioned as a proxy server to fetch S3 payload to bypass CORS issues
+![alt text](image.png)
 
 ## Contributing
 

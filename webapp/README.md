@@ -4,13 +4,6 @@
 
 This is a Quiz App built with React, TypeScript, and Vite. The application allows users to participate in quizzes, providing instant feedback on their answers. It features multiple activities, each containing a series of questions, and displays results at the end of each activity.
 
-## Features
-
-- **Home Screen**: The home screen contains 2 buttons. Each button starts one of the two activities
-- **Activity One Screen**: Activity one's flow includes a series of flat questions.
-- **Activity Two Screen**: Activity two's flow includes a series of rounds with questions.
-- **Result Screen**: Displays the score to the user after each eactivity, and also includes a button to link to the home screen
-
 ## Technologies Used
 
 - **React**: A JavaScript library for building user interfaces.
