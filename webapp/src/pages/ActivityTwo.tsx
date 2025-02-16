@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { type ActivityTwo, Round } from "../types/data";
 import { ACTIVITY_TWO } from "../constants/common";
 import QuestionBox from "../components/QuestionBox";
+import RoundBox from "../components/RoundBox";
 import Results from "../components/Results";
 import { ResultsState, QuestionResult } from "../types/result";
 
@@ -96,7 +97,10 @@ const ActivityTwo = () => {
   return (
     <>
       {showRound ? (
-        <>HI</>
+        <RoundBox
+          activityName={currentActivity.activity_name}
+          roundTitle={currentRound.round_title}
+        />
       ) : isActivityDone ? (
         <Results resultsData={resultsData} />
       ) : (
