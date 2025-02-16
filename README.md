@@ -18,9 +18,7 @@ You can access the application directly in your browser here: [http://3.106.224.
 ## This project consists of two main components:
 
 1. **Web Application**: A front-end quiz application developed using React, TypeScript, and Vite, where users can participate in quizzes and receive instant feedback.
-2. **Web Service**: A backend service built with Node.js and Express that fetches quiz data from a remote JSON source.
-
-This project is designed to be lightweight, fast, and easy to set up, making it a great starting point for anyone interested in building interactive quiz-based applications.
+2. **Web Service**: A backend service built with Node.js and Express, designed to fetch quiz data from a remote JSON source. It functions as a proxy server to retrieve S3 payloads while bypassing CORS restrictions. Additionally, it can be extended to provide separate endpoints for validation, data processing, and other enhancements.
 
 ## Getting Started
 
