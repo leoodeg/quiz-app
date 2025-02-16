@@ -27,7 +27,10 @@ const Home = () => {
     getData();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <div className="flex items-center justify-center w-full">Loading...</div>
+    );
   if (error) return <p>Error: {error.message}</p>;
 
   const handleActivityClick = (activity: ActivityOne | ActivityTwo) => {
