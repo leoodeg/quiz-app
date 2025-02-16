@@ -6,12 +6,10 @@ interface RoundBoxType {
 const RoundBox = ({ activityName, roundTitle }: RoundBoxType) => {
   return (
     <>
-      <div className="bg-white flex flex-col m-auto w-lg border border-gray-200 pt-6 h-[288px]">
-        <div className="text-sm mb-8 font-bold pl-6">
-          {activityName.toUpperCase()}
-        </div>
+      <div className="container h-[288px]">
+        <div className="text-subheading">{activityName.toUpperCase()}</div>
 
-        <div className="text-2xl mb-8 font-bold pl-6">{roundTitle}</div>
+        <div className="text-heading">{roundTitle}</div>
       </div>
     </>
   );

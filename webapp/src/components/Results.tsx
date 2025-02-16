@@ -10,7 +10,7 @@ const Results = ({ resultsData }: { resultsData: ResultsState }) => {
         {resultsData.activityName.toLocaleUpperCase()}
       </div>
 
-      <h2 className="text-4xl mb-12 font-bold">Results</h2>
+      <h2 className="title">Results</h2>
 
       <div className="w-full flex flex-col items-center text-center divide-y divide-gray-300 border-y border-gray-300">
         {resultsData.rounds.map((round) => (

@@ -16,40 +16,28 @@ const QuestionBox = ({
   order,
 }: QuestionBoxType) => {
   return (
-    <>
-      <div className="bg-white flex flex-col m-auto w-lg border border-gray-200 pt-6">
-        <div className="text-sm mb-8 font-bold pl-6">
-          {activityName.toUpperCase()}{" "}
-          {roundTitle ? `/ ${roundTitle?.toUpperCase()}` : ""}
-        </div>
-
-        <div className="text-2xl mb-8 font-bold pl-6">Q{order}.</div>
-
-        <FormattedText
-          className="bg-skyblue w-full border-y py-5 pl-6 border-gray-300"
-          text={stimulus}
-        />
-
-        <div className="flex gap-24 self-center py-6">
-          <button
-            className="px-8 py-2 text-xs font-bold bg-white"
-            onClick={() => {
-              setAnswer(true);
-            }}
-          >
-            CORRECT
-          </button>
-          <button
-            className="px-8 py-2 text-xs font-bold"
-            onClick={() => {
-              setAnswer(false);
-            }}
-          >
-            INCORRECT
-          </button>
-        </div>
+    <div className="container">
+      <div className="text-subheading">
+        {activityName.toUpperCase()}{" "}
+        {roundTitle ? `/ ${roundTitle?.toUpperCase()}` : ""}
       </div>
-    </>
+
+      <div className="text-heading">Q{order}.</div>
+
+      <FormattedText
+        className="bg-skyblue w-full border-y py-5 pl-6 border-gray-300"
+        text={stimulus}
+      />
+
+      <div className="flex gap-24 self-center py-6">
+        <button className="btn" onClick={() => setAnswer(true)}>
+          CORRECT
+        </button>
+        <button className="btn" onClick={() => setAnswer(false)}>
+          INCORRECT
+        </button>
+      </div>
+    </div>
   );
 };
 

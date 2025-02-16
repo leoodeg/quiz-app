@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @theme {
   --color-coralblue: #2799fb;
   --color-skyblue: #fcfdff;
@@ -59,3 +63,36 @@ button {
     color: #747bff;
   }
 }
+
+
+
+
+.title{
+  @apply text-4xl mb-12 font-bold
+}
+
+.btn {
+  @apply px-8 py-2 text-xs font-bold bg-white;
+}
+
+
+.container {
+  @apply bg-white flex flex-col m-auto border border-gray-200 pt-6 w-2xl;
+}
+
+
+.text-heading {
+  @apply text-2xl mb-8 font-bold pl-6;
+}
+
+.text-subheading {
+  @apply text-sm mb-8 font-bold pl-6;
+}
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
+
+.flex-column {
+  @apply flex flex-col;
+} 

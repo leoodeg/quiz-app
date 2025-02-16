@@ -27,10 +27,7 @@ const Home = () => {
     getData();
   }, []);
 
-  if (loading)
-    return (
-      <div className="flex items-center justify-center w-full">Loading...</div>
-    );
+  if (loading) return <div className="flex-center w-full">Loading...</div>;
   if (error) return <p>Error: {error.message}</p>;
 
   const handleActivityClick = (activity: ActivityOne | ActivityTwo) => {
@@ -43,11 +40,11 @@ const Home = () => {
 
   return (
     data && (
-      <div className="bg-white flex flex-col m-auto items-center w-xs border border-gray-200">
+      <div className="flex-center bg-white flex-col m-auto w-xs border border-gray-200">
         <h3 className="my-12">CAE</h3>
-        <h1 className="font-bold mb-10">{data.name}</h1>
+        <h2 className="title">{data.name}</h2>
 
-        <ul className="w-full flex flex-col items-center text-center divide-y divide-gray-300 border-y border-gray-300">
+        <ul className=" flex-center w-full flex-col text-center divide-y divide-gray-300 border-y border-gray-300">
           {data.activities.map((activity) => (
             <li
               key={activity.order}
