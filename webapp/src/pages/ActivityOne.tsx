@@ -37,7 +37,14 @@ const ActivityOne = () => {
     });
   };
 
-  if (!currentActivity) return <div>Loading...</div>;
+  /* Because the principle for this implmentation
+  is a one fetch API, that is only located in the home page to initialize */
+  if (!currentActivity)
+    return (
+      <div className="flex-center w-full">
+        Please go to homepage to register..
+      </div>
+    );
 
   const handleSetAnswer = (answer: boolean) => {
     const newQuestionIndex = questionIndex + 1;
