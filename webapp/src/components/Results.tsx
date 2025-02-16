@@ -6,7 +6,7 @@ const Results = ({ resultsData }: { resultsData: ResultsState }) => {
 
   return (
     <div className="bg-white flex flex-col m-auto items-center w-xs border border-gray-200 pt-6">
-      <div className="text-sm mb-12 font-bold">
+      <div className="text-subheading mb-12 ">
         {resultsData.activityName.toLocaleUpperCase()}
       </div>
 

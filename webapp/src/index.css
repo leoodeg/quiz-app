@@ -65,8 +65,6 @@ button {
 }
 
 
-
-
 .title{
   @apply text-4xl mb-12 font-bold
 }
@@ -82,11 +80,11 @@ button {
 
 
 .text-heading {
-  @apply text-2xl mb-8 font-bold pl-6;
+  @apply text-2xl font-bold;
 }
 
 .text-subheading {
-  @apply text-sm mb-8 font-bold pl-6;
+  @apply text-sm font-bold;
 }
 
 .flex-center {

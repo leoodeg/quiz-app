@@ -17,12 +17,12 @@ const QuestionBox = ({
 }: QuestionBoxType) => {
   return (
     <div className="container">
-      <div className="text-subheading">
+      <div className="text-subheading pl-6 mb-8 ">
         {activityName.toUpperCase()}{" "}
         {roundTitle ? `/ ${roundTitle?.toUpperCase()}` : ""}
       </div>
 
-      <div className="text-heading">Q{order}.</div>
+      <div className="text-heading pl-6 mb-8">Q{order}.</div>
 
       <FormattedText
         className="bg-skyblue w-full border-y py-5 pl-6 border-gray-300"
