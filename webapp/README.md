@@ -74,13 +74,3 @@ webapp/
 ├── vite.config.ts           # Vite configuration
 └── ...                      # Other source files
 ```
-
-## Contributing
-
-Contributions are welcome! If you would like to contribute to this project, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bug fix.
-3. Make your changes and commit them.
-4. Push your branch to your forked repository.
-5. Create a pull request.
