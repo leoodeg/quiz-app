@@ -33,6 +33,16 @@ To run the project:
 Note: Express is provisioned as a proxy server to fetch S3 payload to bypass CORS issues
 ![alt text](image.png)
 
+## **Future Improvements** 🚀
+
+- **Enhance Backend Functionality**: Instead of using the backend solely as a proxy, extend it to provide dedicated endpoints for validation, data processing, and additional features. This will help prevent quiz answers from being exposed to client-side inspection.
+- **Optimize State Management**: Instead of relying on location state, consider implementing a more scalable state management solution as the application grows in complexity.
+- **Dynamic Activity Identification**: Improve the structure of `ActivityOne` and `ActivityTwo` by dynamically identifying each activity type within the payload. This ensures that new activity types are automatically integrated without requiring manual adjustments.
+- **Database Integration**: Implement a database to store user data and quiz results, enabling better tracking and persistence.
+- **CI/CD Pipeline Setup**: Automate deployment and streamline the development process by implementing a CI/CD pipeline, including:
+  - **Containerizing the Application** for better scalability and portability.
+  - **Configuring Environment Variables** to manage application settings across different environments.
+
 ## Contributing
 
 Contributions are welcome! If you would like to contribute to this project, please follow these steps:
