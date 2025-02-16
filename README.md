@@ -28,7 +28,7 @@ To run the project:
 2. Start the Web Service (webservice) check out the [WebService README](webservice/README.md)
 3. Open the web app in your browser and start taking quizzes! 🎉
 
-## Architecure
+## Architecture
 
 Note: Express is provisioned as a proxy server to fetch S3 payload to bypass CORS issues
 ![alt text](image.png)
