@@ -70,11 +70,14 @@ const ActivityTwo = () => {
 
   const handleSetAnswer = (answer: boolean) => {
     const newQuestionIndex = questionIndex + 1;
+    const isCorrect =
+      currentRound.questions[questionIndex].is_correct === answer;
+
     addResultToLatestRound({
       order: newQuestionIndex,
-      isAnswerCorrect:
-        currentRound.questions[questionIndex].is_correct === answer,
+      isAnswerCorrect: isCorrect,
     });
+
     setQuestionIndex(newQuestionIndex);
 
     if (newQuestionIndex === totalNoQuestions) {
@@ -82,8 +85,6 @@ const ActivityTwo = () => {
       if (newRoundIndex === totalNoRounds) {
         setIsActivityDone(true);
       } else {
-        // TODO: make this better
-
         addNewRoundToResult();
         displayRound();
         setRoundIndex(newRoundIndex);

@@ -41,11 +41,14 @@ const ActivityOne = () => {
 
   const handleSetAnswer = (answer: boolean) => {
     const newQuestionIndex = questionIndex + 1;
+    const isCorrect =
+      currentActivity.questions[questionIndex].is_correct === answer;
+
     addResultToLatestRound({
       order: newQuestionIndex,
-      isAnswerCorrect:
-        currentActivity.questions[questionIndex].is_correct === answer,
+      isAnswerCorrect: isCorrect,
     });
+
     setQuestionIndex(newQuestionIndex);
 
     if (newQuestionIndex === totalNoQuestions) {
