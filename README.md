@@ -13,7 +13,7 @@ You can access the application directly in your browser here: [http://3.106.224.
 - **Home Screen**: The home screen contains 2 buttons. Each button starts one of the two activities
 - **Activity One Screen**: Activity one's flow includes a series of flat questions.
 - **Activity Two Screen**: Activity two's flow includes a series of rounds with questions.
-- **Result Screen**: Displays the score to the user after each eactivity, and also includes a button to link to the home screen
+- **Result Screen**: Displays the score to the user after each activity, and also includes a button to link to the home screen
 
 ## This project consists of two main components:
 
