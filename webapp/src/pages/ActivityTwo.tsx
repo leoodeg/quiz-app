@@ -1,27 +1,44 @@
 import { useState, useEffect } from "react";
-import {
-  //  useNavigate,
-  useLocation,
-} from "react-router-dom";
-import { type ActivityTwo } from "../types/data";
-import { ACTIVITY_ONE } from "../constants/common";
+import { useLocation } from "react-router-dom";
+import { type ActivityTwo, Round } from "../types/data";
+import { ACTIVITY_TWO } from "../constants/common";
 import QuestionBox from "../components/QuestionBox";
+import Results from "../components/Results";
 import { ResultsState, QuestionResult } from "../types/result";
 
 const ActivityTwo = () => {
   const [currentActivity, setCurrentActivity] = useState<ActivityTwo | null>(
     null
   );
-  const [questionNumber, setQuestionNumber] = useState<number>(0);
+
+  const [questionIndex, setQuestionIndex] = useState<number>(0);
+  const [totalNoQuestions, setTotalNoQuestions] = useState<number>(0);
+  const [totalNoRounds, setTotalNoRounds] = useState<number>(0);
+  const [isActivityDone, setIsActivityDone] = useState<boolean>(false);
   const [resultsData, setResultsData] = useState<ResultsState>({
-    activityName: ACTIVITY_ONE,
-    rounds: [],
+    activityName: ACTIVITY_TWO,
+    rounds: [{ roundNumber: 1, results: [] }],
   });
 
-  // const navigate = useNavigate();
+  const [roundIndex, setRoundIndex] = useState<number>(0);
+  const [currentRound, setCurrentRound] = useState<Round | null>(null);
+  const [showRound, setShowRound] = useState(true);
+
   const location = useLocation();
 
-  const addNewRound = () => {
+  useEffect(() => {
+    if (location.state?.activity) {
+      setCurrentActivity(location.state.activity);
+      setTotalNoQuestions(
+        location.state.activity.questions[0].questions.length
+      );
+      displayRound();
+      setTotalNoRounds(location.state.activity.questions.length);
+      setCurrentRound(location.state.activity.questions[0]);
+    }
+  }, [location]);
+
+  const addNewRoundToResult = () => {
     setResultsData((prevState) => ({
       ...prevState,
       rounds: [
@@ -29,6 +46,13 @@ const ActivityTwo = () => {
         { roundNumber: prevState.rounds.length + 1, results: [] },
       ],
     }));
+  };
+
+  const displayRound = () => {
+    setShowRound(true);
+    setTimeout(() => {
+      setShowRound(false);
+    }, 1000);
   };
 
   const addResultToLatestRound = (newResult: QuestionResult) => {
@@ -41,41 +65,49 @@ const ActivityTwo = () => {
     });
   };
 
-  useEffect(() => {
-    if (location.state?.activity) {
-      setCurrentActivity(location.state.activity);
-      addNewRound();
+  if (!currentActivity || !currentRound) return <div>Loading...</div>;
+
+  const handleSetAnswer = (answer: boolean) => {
+    const newQuestionIndex = questionIndex + 1;
+    addResultToLatestRound({
+      order: newQuestionIndex,
+      isAnswerCorrect:
+        currentRound.questions[questionIndex].is_correct === answer,
+    });
+    setQuestionIndex(newQuestionIndex);
+
+    if (newQuestionIndex === totalNoQuestions) {
+      const newRoundIndex = roundIndex + 1;
+      if (newRoundIndex === totalNoRounds) {
+        setIsActivityDone(true);
+      } else {
+        // TODO: make this better
+
+        addNewRoundToResult();
+        displayRound();
+        setRoundIndex(newRoundIndex);
+        setTotalNoQuestions(currentRound.questions.length);
+        setCurrentRound(currentActivity.questions[newRoundIndex]);
+        setQuestionIndex(0);
+      }
     }
-  }, [location]);
-
-  //   const handleAnswer = () => {
-  //     // TODO: Save answer logic here
-  //     navigate("/results", {
-  //       state: {
-  //         activity: currentActivity,
-  //         answers: [selectedAnswer],
-  //       },
-  //     });
-  //   };
-
-  console.log(resultsData);
-
-  if (!currentActivity) return <div>Loading...</div>;
-
-  const handleSetAnswer = (answer: string) => {
-    addResultToLatestRound({ order: 1, result: answer });
-    setQuestionNumber(questionNumber + 1);
   };
 
   return (
     <>
-      <QuestionBox
-        activityName={currentActivity.activity_name}
-        roundTitle={null}
-        stimulus="temporary"
-        setAnswer={handleSetAnswer}
-        order={currentActivity.questions[questionNumber].order}
-      />
+      {showRound ? (
+        <>HI</>
+      ) : isActivityDone ? (
+        <Results resultsData={resultsData} />
+      ) : (
+        <QuestionBox
+          activityName={currentActivity.activity_name}
+          roundTitle={currentRound.round_title}
+          stimulus={currentRound.questions[questionIndex].stimulus}
+          setAnswer={handleSetAnswer}
+          order={currentRound.questions[questionIndex].order}
+        />
+      )}
     </>
   );
 };

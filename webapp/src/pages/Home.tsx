@@ -56,7 +56,7 @@ const Home = () => {
           ))}
         </ul>
 
-        <div className="py-8">Results</div>
+        <div className="py-8 text-gray-300">Results</div>
       </div>
     )
   );

@@ -1,8 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  //  useNavigate,
-  useLocation,
-} from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { type ActivityOne } from "../types/data";
 import { ACTIVITY_ONE } from "../constants/common";
 import QuestionBox from "../components/QuestionBox";
@@ -18,29 +15,17 @@ const ActivityOne = () => {
   const [isActivityDone, setIsActivityDone] = useState<boolean>(false);
   const [resultsData, setResultsData] = useState<ResultsState>({
     activityName: ACTIVITY_ONE,
-    rounds: [],
+    rounds: [{ roundNumber: 1, results: [] }],
   });
 
-  // const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     if (location.state?.activity) {
       setCurrentActivity(location.state.activity);
       setTotalNoQuestions(location.state.activity.questions.length);
-      addNewRound();
     }
   }, [location]);
-
-  const addNewRound = () => {
-    setResultsData((prevState) => ({
-      ...prevState,
-      rounds: [
-        ...prevState.rounds,
-        { roundNumber: prevState.rounds.length + 1, results: [] },
-      ],
-    }));
-  };
 
   const addResultToLatestRound = (newResult: QuestionResult) => {
     setResultsData((prevState) => {
@@ -51,16 +36,6 @@ const ActivityOne = () => {
       return { ...prevState, rounds: updatedRounds };
     });
   };
-
-  //   const handleAnswer = () => {
-  //     // TODO: Save answer logic here
-  //     navigate("/results", {
-  //       state: {
-  //         activity: currentActivity,
-  //         answers: [selectedAnswer],
-  //       },
-  //     });
-  //   };
 
   if (!currentActivity) return <div>Loading...</div>;
 

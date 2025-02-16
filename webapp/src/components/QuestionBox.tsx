@@ -19,7 +19,8 @@ const QuestionBox = ({
     <>
       <div className="bg-white flex flex-col m-auto w-lg border border-gray-200 pt-6">
         <div className="text-sm mb-8 font-bold pl-6">
-          {activityName.toUpperCase()} {roundTitle && "ROUND HERE"}
+          {activityName.toUpperCase()}{" "}
+          {roundTitle ? `/ ${roundTitle?.toUpperCase()}` : ""}
         </div>
 
         <div className="text-2xl mb-8 font-bold pl-6">Q{order}.</div>
