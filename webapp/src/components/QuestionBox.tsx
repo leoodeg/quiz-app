@@ -31,7 +31,7 @@ const QuestionBox = ({
 
         <div className="flex gap-24 self-center py-6">
           <button
-            className="px-8 py-2 text-xs font-bold"
+            className="px-8 py-2 text-xs font-bold bg-white"
             onClick={() => {
               setAnswer(true);
             }}
