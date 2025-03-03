@@ -35,7 +35,7 @@ Note: Express is provisioned as a proxy server to fetch S3 payload to bypass COR
 
 ## **Future Improvements** 🚀
 
-- **Enhance Backend Functionality**: Instead of using the backend solely as a proxy, extend it to provide dedicated endpoints for validation, data processing, and additional features. This will help prevent quiz answers from being exposed to client-side inspection.
+- **Enhance Backend Functionality**: Instead of using the backend solely as a proxy, extend it to provide dedicated endpoints for validation, data processing, and additional features. This will help prevent quiz answers from being exposed to client-side inspection. Could also improve the security by applying CORS protection and applying VPC rules from the backend
 - **Optimize State Management**: Instead of relying on location state, consider implementing a more scalable state management solution as the application grows in complexity.
 - **Dynamic Activity Identification**: Improve the structure of `ActivityOne` and `ActivityTwo` by dynamically identifying each activity type within the payload. This ensures that new activity types are automatically integrated without requiring manual adjustments.
 - **Database Integration**: Implement a database to store user data and quiz results, enabling better tracking and persistence.
